@@ -1,0 +1,37 @@
+
+
+int Relay1 = 2;
+int Relay2 = 3;
+
+int estado = 0;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(Relay1, OUTPUT);
+  pinMode(Relay2, OUTPUT);
+}
+
+void loop()
+{
+  if( Serial.available()>0)
+  {
+    estado = Serial.read();
+  }
+  switch( estado)
+  {
+    case 'a':
+    digitalWrite(Relay1, HIGH);
+    break;
+    case 'b':
+    digitalWrite(Relay1, LOW);
+    break;
+    
+    case 'c':
+    digitalWrite(Relay2, HIGH);
+    break;
+    case 'd':
+    digitalWrite(Relay2, LOW);
+    break;
+  }
+}
